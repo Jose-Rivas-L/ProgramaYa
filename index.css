@@ -31,7 +31,13 @@ button{
 button:hover{
     background-color: rgb(61, 16, 100);
 }
+#check{
+    display: none;
+}
 
+.nav-icon .cancel{
+    display: none;
+}
 .container{
     max-width: 1400px;
     margin: auto;
@@ -41,6 +47,8 @@ button:hover{
 
 header{
     background-color: rgb(245, 245, 245);
+    position: fixed;
+    width: 100%;
 }
 
 header .logo{
@@ -53,15 +61,35 @@ header .logo{
 
 header .container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    min-height: 4.5em;
 }
 
 header nav{
+    display: none;
+}
+
+header .nav-icon{
+    margin-right: 2em;
+}
+
+#check:checked ~label .cancel{
+    display: block;
+}
+#check:checked ~label .active{
+    display: none;
+}
+#check:checked ~ nav{
     display: flex;
     flex-direction: column;
     text-align: center;
     padding-bottom: 25px;
+    position: absolute;
+    width: 100%;
+    top: 4.5em;
+    background-color: rgb(245, 245, 245);
 }
 
 header a{
@@ -211,11 +239,18 @@ footer .container{
         flex-direction: row;
         justify-content: space-between;
     }
+    .nav-icon{
+        display: none;
+    }
 
-    header nav{
+    header nav, 
+    #check:checked ~ nav{
+        display: flex;
         flex-direction: row;
         padding-bottom: 0;
         padding-right: 20px;
+        width: unset;
+        position: unset;
     }
 
     #hero h1{
